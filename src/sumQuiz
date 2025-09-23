@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class sumQuiz {
+    public static Scanner sc = new Scanner(System.in);
+
+    public static int insertNum(int num){
+        num = sc.nextInt();
+        return num;
+    }
+
+    public static int sumNum(int num, int total){
+        return total + num;
+    }
+    public static void main(String[] args) {
+        int myNum = 0;
+        int num = 0;
+        int total = 0;
+        int insert;
+        int first = 0;
+        System.out.println("몇가지 수를 입력 받으시겠습니까?");
+        myNum = insertNum(myNum);
+        while(num < myNum){
+            System.out.println((num + 1) + "번째 숫자:");
+            insert = sc.nextInt();
+            total = sumNum(insert, total);
+            num += 1;
+            System.out.println(insert + " + " + first + " = " + total);
+            first = total;
+        }
+    }
+}
