@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class twiceWhile {
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int num1 = 0;
+        int num2 = 0;
+        int answer1 = 0;
+        int answer2 = 0;
+        int correct = 0;
+        int wrong = 0;
+        int chance = 0;
+        int temp;
+
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        while(chance < 10){
+            System.out.println(num1 + " + " + num2 + " = ");
+            answer1 = sc.nextInt();
+            if(answer1 == num1 + num2){
+                System.out.println("정답입니다.");
+                correct += 1;
+                if(correct < wrong){
+                    chance = 0;
+                    correct = 0;
+                    wrong = 0;
+                    continue;
+                }
+                break;
+            }
+            else {
+                System.out.println("오답입니다.");
+                wrong += 1;
+                chance += 1;
+                if(chance > 9){
+                    chance = 0;
+                }
+            }
+        }
+
+        correct = 0;
+        wrong = 0;
+        chance = 0;
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        while (chance < 5){
+            int answer3 = 0;
+            System.out.println("1. " + num1);
+            System.out.println("2. " + num2);
+            answer2 = sc.nextInt();
+            switch (answer2){
+                case 1:
+                    if(num1 > num2){
+                        System.out.println("정답입니다.");
+                        correct += 1;
+                    }
+                    else {
+                        wrong += 1;
+                        temp = num1;
+                        num1 = num2;
+                        num2 = temp;
+                        chance += 1;
+                    }
+                    break;
+                case 2:
+                    if(num1 < num2){
+                        System.out.println("정답입니다.");
+                        correct += 1;
+                    }
+                    else {
+                        wrong += 1;
+                        temp = num1;
+                        num1 = num2;
+                        num2 = temp;
+                        chance += 1;
+                    }
+                    break;
+            }
+            if(correct == 1){
+                break;
+            }
+            if(wrong >=3){
+                if(num1 > num2){
+                    answer3 = 2;
+                }
+                else {
+                    answer3 = 1;
+                }
+                System.out.println("오답입니다. 정답은 " + answer3);
+                chance = 0;
+
+            }
+        }
+
+    }
+}
