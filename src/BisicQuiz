@@ -1,0 +1,129 @@
+import java.util.Scanner;
+
+public class BasicQuiz {
+    private static final Scanner sc = new Scanner(System.in);
+
+    //음식 개수 입력
+    public static int insertQty(int foodQty) {
+        foodQty = sc.nextInt();
+        System.out.println(foodQty + "개");
+        return foodQty;
+    }
+
+    //추가 용돈 받기
+    public static int plusMoney() {
+        int plusM = sc.nextInt();
+        return plusM;
+    }
+
+    //쫓겨나다
+    public static void getOut() {
+        System.out.println("돈이 부족하여 주인장에게 쫓겨났습니다. 돈 벌어오세요");
+    }
+
+    public static void main(String[] args) {
+        int money = 10000;
+        int foodQty = 0;
+        int howManyPlus = 0;
+        String food1 = "떡볶이";
+        String food2 = "우동";
+        String food3 = "과자";
+        String food4 = "오뎅";
+        String food5 = "튀김";
+        int foodPrice1 = 1000;
+        int foodPrice2 = 1000;
+        int foodPrice3 = 1000;
+        int foodPrice4 = 1000;
+        int foodPrice5 = 1000;
+        int total = 0;
+
+
+        System.out.println("추가 용돈을 받으세요");
+        money += plusMoney();
+        howManyPlus += 1;
+        System.out.println("현재 금액 : " + money + "원");
+
+        //떡볶이 주문
+        System.out.println(food1 + "몇개 주문 하시겠습니까?");
+        foodQty = insertQty(foodQty);
+        total += foodQty * foodPrice1;
+
+        if(total > money){
+            System.out.println("현재 " + (total- money) + "원 만큼 부족합니다.");
+            System.out.println("추가 용돈을 받으세요");
+            money += plusMoney();
+            howManyPlus += 1;
+        }
+        //돈이 남는다면 우동 주문
+        if (money >= total) {
+            System.out.println("현재 주문 가격 : " + (foodQty * foodPrice1));
+            System.out.println(food1 + "는 " + total + "원 이였습니다. 현재 남은금액: " + (money - total));
+            System.out.println(food2 + "몇개 주문 하시겠습니까?");
+            foodQty = insertQty(foodQty);
+            total += foodQty * foodPrice2;
+            System.out.println("현재 주문 가격 : " + total);
+            if (total > money) {
+                System.out.println("현재 " + (total- money) + "원 만큼 부족합니다.");
+                System.out.println("추가 용돈을 받으세요");
+                money += plusMoney();
+                howManyPlus += 1;
+            }
+            if (howManyPlus == 2 && total > money) {
+                getOut();
+            }
+            //돈이 남는다면 과자 주문
+            if (total <= money) {
+                System.out.println(food2 + "은 " + (foodQty * foodPrice2) + "원 이었습니다. 현재 남은금액" + (money - total));
+                System.out.println(food3 + "몇개 주문 하시겠습니까?");
+                foodQty = insertQty(foodQty);
+                total += foodQty * foodPrice3;
+                if (total > money && howManyPlus == 1) {
+                    System.out.println("현재 " + (total- money) + "원 만큼 부족합니다.");
+                    System.out.println("추가 용돈을 받으세요");
+                    money += plusMoney();
+                    howManyPlus += 1;
+                }
+                if (howManyPlus == 2 && total > money) {
+                    getOut();
+                }
+                //돈이 남는다면 오뎅 주문
+                if(total <= money){
+                    System.out.println(food3 + "은 " + (foodQty * foodPrice3) + "원 이었습니다. 현재 남은금액" + (money - total));
+                    System.out.println(food4 + "몇개 주문 하시겠습니까?");
+                    foodQty = insertQty(foodQty);
+                    total += foodQty * foodPrice4;
+                    if (total > money && howManyPlus == 1) {
+                        System.out.println("현재 " + (total- money) + "원 만큼 부족합니다.");
+                        System.out.println("추가 용돈을 받으세요");
+                        money += plusMoney();
+                        howManyPlus += 1;
+                    }
+                    if (howManyPlus == 2 && total > money) {
+                        getOut();
+                    }
+                    //돈이 남는다면 튀김 주문
+                    if(total <= money){
+                        System.out.println(food4 + "은 " + (foodQty * foodPrice4) + "원 이었습니다. 현재 남은금액" + (money - total));
+                        System.out.println(food5 + "몇개 주문 하시겠습니까?");
+                        foodQty = insertQty(foodQty);
+                        total += foodQty * foodPrice5;
+                        if (total > money && howManyPlus == 1) {
+                            System.out.println("현재 " + (total- money) + "원 만큼 부족합니다.");
+                            System.out.println("추가 용돈을 받으세요");
+                            money += plusMoney();
+                            howManyPlus += 1;
+                        }
+                        if (howManyPlus == 2 && total > money) {
+                            getOut();
+                        }
+                        if(total <= money){
+                            System.out.println(food5 + "은 " + (foodQty * foodPrice5) + "원 이었습니다. 현재 남은금액" + (money - total));
+                            System.out.println("음식 나왔습니다. 맛있게 드세요");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
