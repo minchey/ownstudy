@@ -1,0 +1,107 @@
+import java.util.Scanner;
+
+public class Quiz10 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name1;
+        String name2;
+        String name3;
+        String name4;
+        int score1;
+        int score2;
+        int score3;
+        int score4;
+
+        int choose1 = 0;
+        int choose2 = 0;
+
+        int whoScore1 = 0;
+        int whoScore2 = 0;
+
+        System.out.println("첫번째 사람 이름: ");
+        name1 = sc.next();
+        System.out.println(name1 + "의 점수는: ");
+        score1 = sc.nextInt();
+
+        System.out.println("두번째 사람 이름: ");
+        name2 = sc.next();
+        System.out.println(name2 + "의 점수는: ");
+        score2 = sc.nextInt();
+
+        System.out.println("세번째 사람 이름: ");
+        name3 = sc.next();
+        System.out.println(name3 + "의 점수는: ");
+        score3 = sc.nextInt();
+
+        System.out.println("네번째 사람 이름: ");
+        name4 = sc.next();
+        System.out.println(name4 + "의 점수는: ");
+        score4 = sc.nextInt();
+
+        while (true) {
+            String chooseName1 = "";
+            String chooseName2 = "";
+            System.out.println("1." + name1);
+            System.out.println("2. " + name2);
+            System.out.println("3. " + name3);
+            System.out.println("4. " + name4);
+            System.out.println("5. 종료");
+            System.out.println("누구와 누구를 대조하시겠습니까?");
+            System.out.println("첫번째 사람입력: ");
+            choose1 = sc.nextInt();
+            System.out.println("두번째 사람 입력: ");
+            choose2 = sc.nextInt();
+
+            if (choose1 == 1) {
+                whoScore1 = score1;
+                chooseName1 = name1;
+            }
+            if (choose1 == 2) {
+                whoScore1 = score2;
+                chooseName1 = name2;
+            }
+            if (choose1 == 3) {
+                whoScore1 = score3;
+                chooseName1 = name3;
+            }
+            if (choose1 == 4) {
+                whoScore1 = score4;
+                chooseName1 = name4;
+            }
+
+            if (choose2 == 1) {
+                whoScore2 = score1;
+                chooseName2 = name1;
+            }
+            if (choose2 == 2) {
+                whoScore2 = score2;
+                chooseName2 = name2;
+            }
+            if (choose2 == 3) {
+                whoScore2 = score3;
+                chooseName2 = name3;
+            }
+            if (choose2 == 4) {
+                whoScore2 = score4;
+                chooseName2 = name4;
+            }
+
+            if((whoScore1 > whoScore2)&& (choose1 != 5 && choose2 != 5)){
+                System.out.println(chooseName1 + "의 점수가 " + chooseName2 + "의 점수보다 큽니다!");
+            }
+            if((whoScore2> whoScore1) && (choose1 != 5 && choose2 != 5)){
+                System.out.println(chooseName2 + "의 점수가 " + chooseName1 + "의 점수보다 큽니다!");
+            }
+
+            boolean chooseResult = (choose1 == choose2);
+            if(chooseResult){
+                System.out.println("잘못된 입력입니다!");
+                continue;
+            }
+            if(choose1 == 5 || choose2 == 5){
+                break;
+            }
+        }
+
+    }
+}
