@@ -1,0 +1,40 @@
+public class forQuiz {
+    public static void main(String[] args) {
+        for (int i = 2; i < 41; i += 2) {
+            if (i == 4 || i == 8 || i == 14) {
+                continue;
+            }
+            if (i == 18) {
+                System.out.println("==============구구단 " + 118 + "단=========");
+                for (int k = 1; k < 10; k++) {
+                    System.out.println("118 X " + k + " = " + 118 * k);
+                }
+                continue;
+            }
+            if (i == 20) {
+                System.out.println("==============구구단 " + 220 + "단=========");
+                for (int k = 1; k < 10; k++) {
+                    System.out.println("220 X " + k + " = " + 220 * k);
+                }
+                System.out.println("==============구구단 " + 21 + "단=========");
+                for (int j = 1; j < 10; j++) {
+                    System.out.println("21 X " + j + " = " + 21 * j);
+                }
+                continue;
+            }
+            if (i % 10 == 0) {
+                System.out.println("==============구구단 " + (i + 1) + "단=========");
+                for (int j = 1; j < 10; j++) {
+
+                    System.out.println((i + 1) + " X " + j + " = " + (i + 1) * j);
+                }
+                continue;
+            }
+            System.out.println("==============구구단 " + i + "단=========");
+
+            for (int j = 1; j < 10; j++) {
+                System.out.println(i + " X " + j + " = " + i * j);
+            }
+        }
+    }
+}
