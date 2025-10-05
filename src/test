@@ -1,0 +1,157 @@
+import java.util.Scanner;
+
+public class test {
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void gugudan(int num) {
+        for (int i = 1; i < 10; i++) {
+            System.out.println(num + " X " + i + " = " + num * i);
+        }
+    }
+
+    public static int restaurant(int total,int price1,int price2,int price3,int price4,int price5) {
+        int choose;
+        int choose2;
+        int result = 0;
+        while (true) {
+            System.out.println("[1.볶음밥 2.자장면 3.탕수육[소,중,대] 4.종료");
+            choose = sc.nextInt();
+            if (choose == 1) {
+                result += price1;
+            }
+            if (choose == 2) {
+                result += price2;
+            }
+            if (choose == 3) {
+                System.out.println("탕수육 1.소 : " + price3 + "원");
+                System.out.println("탕수육 2.중 : " + price4 + "원");
+                System.out.println("탕수육 3.대 : " + price5 + "원");
+                choose2 = sc.nextInt();
+                if (choose2 == 1) {
+                    result += price3;
+                }
+                if (choose2 == 2) {
+                    result += price4;
+                }
+                if (choose2 == 3) {
+                    result += price5;
+                }
+            }
+            if (choose == 4) {
+                total += result;
+                System.out.println("총 금액은 " + total + "원 입니다.");
+                return total;
+
+            }
+        }
+    }
+
+    public static int calculate(int result) {
+        int choose;
+        int num1;
+        int num2;
+
+        while (true) {
+            System.out.println("1. 더하기 2. 뺴기 3.종료");
+            choose = sc.nextInt();
+            if (result != 0) {
+                if (choose == 1) {
+                    System.out.println("두번째 숫자 입력: ");
+                    num1 = sc.nextInt();
+                    System.out.println(result + " + " + num1 + " = " + (result + num1));
+                    result += num1;
+                    return result;
+                }
+                if (choose == 2) {
+                    System.out.println("두번째 숫자 입력: ");
+                    num1 = sc.nextInt();
+                    if (num1 > result) {
+                        System.out.println("두 번째 숫자가 더 클 수는 없습니다!!");
+                        continue;
+                    }
+                    System.out.println(result + " - " + num1 + " = " + (result - num1));
+                    result -= num1;
+                    return result;
+                }
+            }
+            if (choose == 1) {
+                System.out.println("첫번째 숫자");
+                num1 = sc.nextInt();
+                System.out.println("두번째 숫자");
+                num2 = sc.nextInt();
+                System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+                result = num1 + num2;
+                return result;
+            }
+            if (choose == 2) {
+                System.out.println("첫번째 숫자");
+                num1 = sc.nextInt();
+                System.out.println("두번째 숫자");
+                num2 = sc.nextInt();
+                if (num1 < num2) {
+                    System.out.println("두 번째 숫자가 더 클 수는 없습니다!!");
+                    continue;
+                }
+                if (num1 > num2) {
+                    System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+                    result = num1 - num2;
+                    return result;
+                }
+            }
+            if (choose == 3) {
+                return result;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int quizNum;
+        int guguNum;
+        int totalPrice = 0;
+        int price1 = 0;
+        int price2 = 0;
+        int price3 = 0;
+        int price4 = 0;
+        int price5 = 0;
+
+        int result2 = 0;
+        while (true) {
+
+            System.out.println("[1.구구단 2.음식점 3.계산기 4.종료]");
+            quizNum = sc.nextInt();
+            if (quizNum == 1) {
+                System.out.println("구구단 몇단을 보고 싶으신가요?: ");
+                guguNum = sc.nextInt();
+                System.out.println(guguNum + "단만 나오는 구구단을 설정해주세요");
+                gugudan(guguNum);
+            }
+            if (quizNum == 2) {
+                System.out.println("음식점을 차릴 건데, 포스기에서 사용하는 코딩을 설정해주세요. ");
+                if(totalPrice ==0) {
+                    System.out.println("자장면 가격: ");
+                    price1 = sc.nextInt();
+                    System.out.println("볶음밥 가격: ");
+                    price2 = sc.nextInt();
+                    System.out.println("탕수육 소 가격: ");
+                    price3 = sc.nextInt();
+                    System.out.println("탕수육 중 가격: ");
+                    price4 = sc.nextInt();
+                    System.out.println("탕수육 대 가격: ");
+                    price5 = sc.nextInt();
+                }
+                totalPrice = restaurant(totalPrice, price1, price2, price3, price4, price5);
+            }
+
+
+
+            if (quizNum == 3) {
+                System.out.println(" 계산기가 필요해요. 더하기와 빼기만 있으면 되는데 가능할까요?");
+                result2 = calculate(result2);
+            }
+            if (quizNum == 4) {
+                System.out.println("종료");
+                break;
+            }
+        }
+    }
+}
